@@ -1,0 +1,99 @@
+# Titre du menu. Supporte les placeholders du joueur cible.
+menu_title: '&8&lMenu &8| Infos de %player_name%'
+
+# Taille de l'inventaire. Doit être un multiple de 9 (9, 18, 27, 36, 45, 54).
+size: 27
+
+# Commandes à exécuter pour le joueur qui ouvre le menu, au moment de l'ouverture.
+# Supporte les placeholders du joueur cible.
+# Préfixes disponibles : [sound] <sound_name>
+open_commands:
+  - "[sound] UI_TOAST_IN"
+
+# Définition des items dans le menu.
+# Le nom de chaque item ('glass_pane', 'infos_player', etc.) est un identifiant interne.
+items:
+  'glass_pane':
+    material: BLACK_STAINED_GLASS_PANE
+    # Le nom peut être vide
+    display_name: '&r'
+    # La lore peut être vide
+    lore: []
+    # Liste des slots où cet item doit apparaître.
+    slots:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
+      - 12
+      - 15
+      - 16
+      - 17
+      - 18
+      - 19
+      - 20
+      - 21
+      - 22
+      - 23
+      - 24
+      - 25
+      - 26
+
+  'infos_player':
+    # Matériau spécial : 'head-%player_name%' sera automatiquement remplacé par la tête du joueur cible.
+    material: head-%player_name%
+    slot: 11
+    display_name: '&fInformations de &e%player_name%'
+    lore:
+      - '&7Grade: %vault_prefix%'
+      - '&7Temps de jeu: &5%jetsantiafkpro_timeplayed_hours_unformatted% heures'
+      - '&71ère connexion: &d%player_first_join_date%'
+      - '&8(ᴀᴠᴇᴄ %statistic_leave_game% ᴄᴏɴɴᴇxɪᴏɴѕ)'
+      - '&7Votes du mois: &b%voteparty_totalvotes_monthly%'
+      - ''
+      - '&7Île: %superior_island_name%&7 (&f%superior_player_role%&7)'
+      - '&7Niveau d''île: &e%superior_island_level% &7(&e#%superior_island_top_level_position%&7)'
+      - ''
+      - '&7Money: &e%vault_eco_balance_formatted% SHCoins'
+      - '&7Experience: &a%player_current_exp% EXP &7(&2%player_level% Lvl&7)'
+      - '&7JobsPoints: &6%shjobs_player_points% &6&l☀'
+
+  'trade_button':
+    material: EMERALD
+    slot: 13
+    display_name: '&aFaire une demande de trade'
+    lore:
+      - ""
+      - '&8&l« &7Envoyez une demande de trade'
+      - '&7à %vault_prefix%%player_name% &8&l»'
+      - ""
+      - "&7&o(( &f&oCliquez pour &a&oenvoyer une demande &7&o))"
+    # Commandes exécutées lors du clic.
+    # [player] <commande> -> Exécutée par le joueur.
+    # [console] <commande> -> Exécutée par la console.
+    # [close] -> Ferme le menu.
+    click_commands:
+      - "[player] trade %player_name%"
+      - "[close]"
+
+  'invsee_button':
+    material: SPYGLASS
+    slot: 14
+    display_name: '&6Voir l''inventaire de %player_name%'
+    lore:
+      - "&8ɢʀᴀᴅᴇ &aᴠɪᴘᴇʟɪᴛᴇ &8ʀᴇǫᴜɪѕ."
+      - ""
+      - '&8&l« &7Ouvrez un menu qui affiche l''inventaire'
+      - '&7de %vault_prefix%%player_name% &7en temps réel &8&l»'
+      - ""
+      - "&7&o(( &f&oCliquez pour &6&oouvrir &7&o))"
+    click_commands:
+      - "[player] inv %player_name%"
+      # - "[close]"

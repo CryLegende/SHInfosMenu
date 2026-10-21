@@ -1,0 +1,21 @@
+# Doit-on vérifier si le joueur est en ligne pour ouvrir le menu ?
+# Si false, le menu s'ouvrira même pour les joueurs hors ligne (les placeholders fonctionneront quand même).
+check-if-online: true
+
+# Liste des joueurs pour qui la commande /infos ne fonctionnera pas.
+# Les noms sont sensibles à la casse.
+blacklist:
+  - "Cry_Legende"
+  - "Enzias"
+  - "Topicfly"
+
+# Messages configurables (supporte les codes couleurs avec '&')
+# Placeholders disponibles:
+# %target% -> Le nom du joueur dans l'argument de la commande
+messages:
+  no-permission: "&7&l« &f&lSH &8&l» &fCommande inconnue, essayez autre chose."
+  usage: "&7&l« &c&lSH &8&l» &7Usage: &c/infos <joueur>"
+  player-not-found: "&7&l« &c&lSH &8&l» &7Le joueur '&c%target%&7' n'a jamais été vu sur le serveur."
+  player-offline: "&7&l« &c&lSH &8&l» &7Le joueur '&c%target%&7' est actuellement hors ligne."
+  player-blacklisted: "&7&l« &c&lSH &8&l» &7Vous ne pouvez pas consulter les informations de ce joueur."
+  console-not-allowed: "&7&l« &c&lSH &8&l» &7Cette commande ne peut être exécutée que par un joueur."

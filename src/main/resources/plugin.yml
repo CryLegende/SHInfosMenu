@@ -1,0 +1,13 @@
+name: SHInfosMenu
+version: '${project.version}'
+main: org.Cry_Legende.sHInfosMenu.SHInfosMenu
+api-version: '1.20'
+author: Cry_Legende
+description: Ouvre un menu d'informations sur un joueur.
+depend: [PlaceholderAPI]
+
+commands:
+  infos:
+    description: Ouvre le menu d'informations pour un joueur.
+    usage: "/infos <joueur>"
+    permission: shinfosmenu.use
