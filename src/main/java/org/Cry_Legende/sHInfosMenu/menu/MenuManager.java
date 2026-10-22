@@ -35,7 +35,9 @@ public class MenuManager {
 
         int size = menuConfig.getInt("size", 27);
 
-        Inventory menu = Bukkit.createInventory(null, size, title);
+        InfosHolder holder = new InfosHolder(target);
+        Inventory menu = Bukkit.createInventory(holder, size, title);
+        holder.setInventory(menu);
 
         // Parcourir les items définis dans menu.yml
         for (String key : menuConfig.getConfigurationSection("items").getKeys(false)) {
