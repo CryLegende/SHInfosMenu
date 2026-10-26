@@ -21,8 +21,9 @@ public class MenuListener implements Listener {
 
     @EventHandler(priority = EventPriority.LOWEST)
     public void onInventoryClick(InventoryClickEvent event) {
-        // Le menu est reconnu par son holder : le titre vient de la config et peut contenir n'importe quoi
-        if (!(event.getView().getTopInventory().getHolder() instanceof InfosHolder holder)) {
+        // Le menu est reconnu par son holder : le titre vient de la config et peut contenir n'importe quoi.
+        // getHolder(false) : pas de copie d'état du bloc (coffre, tonneau...) à chaque clic dans n'importe quel inventaire du serveur
+        if (!(event.getView().getTopInventory().getHolder(false) instanceof InfosHolder holder)) {
             return;
         }
 
@@ -68,7 +69,7 @@ public class MenuListener implements Listener {
 
     @EventHandler(priority = EventPriority.LOWEST)
     public void onInventoryDrag(InventoryDragEvent event) {
-        if (event.getView().getTopInventory().getHolder() instanceof InfosHolder) {
+        if (event.getView().getTopInventory().getHolder(false) instanceof InfosHolder) {
             event.setCancelled(true);
         }
     }

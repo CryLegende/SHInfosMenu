@@ -5,7 +5,9 @@ import org.Cry_Legende.sHInfosMenu.SHInfosMenu;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.Registry;
 import org.bukkit.Sound;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -16,6 +18,7 @@ import org.bukkit.inventory.meta.SkullMeta;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 public class MenuManager {
@@ -106,6 +109,21 @@ public class MenuManager {
         }
     }
 
+    /** Son lu en config : ancien nom (ENTITY_PLAYER_LEVELUP) ou clé (minecraft:entity.player.levelup). */
+    static Sound sound(String raw) {
+        if (raw == null || raw.isBlank()) return null;
+        String s = raw.trim();
+        if (s.indexOf(':') >= 0 || s.indexOf('.') >= 0) {
+            NamespacedKey key = NamespacedKey.fromString(s.toLowerCase(Locale.ROOT));
+            return key == null ? null : Registry.SOUND_EVENT.get(key);
+        }
+        try {
+            return (Sound) Sound.class.getField(s.toUpperCase(Locale.ROOT)).get(null);
+        } catch (ReflectiveOperationException | ClassCastException e) {
+            return null;
+        }
+    }
+
     // Méthode pour exécuter les commandes (utilisée aussi par le Listener)
     public void executeCommand(Player viewer, OfflinePlayer target, String command) {
         command = PlaceholderAPI.setPlaceholders(target, command);
@@ -117,11 +135,10 @@ public class MenuManager {
         } else if (command.equalsIgnoreCase("[close]")) {
             viewer.closeInventory();
         } else if (command.toLowerCase().startsWith("[sound] ")) {
-            try {
-                String soundName = command.substring(8).toUpperCase();
-                Sound sound = Sound.valueOf(soundName);
+            Sound sound = sound(command.substring(8));
+            if (sound != null) {
                 viewer.playSound(viewer.getLocation(), sound, 1.0f, 1.0f);
-            } catch (IllegalArgumentException e) {
+            } else {
                 plugin.getLogger().warning("Son invalide: " + command.substring(8));
             }
         } else {
