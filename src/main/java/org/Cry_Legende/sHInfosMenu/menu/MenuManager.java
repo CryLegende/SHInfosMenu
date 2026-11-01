@@ -33,7 +33,7 @@ public class MenuManager {
         FileConfiguration menuConfig = plugin.getMenuConfig();
 
         String title = menuConfig.getString("menu_title", "Infos de %player_name%");
-        title = PlaceholderAPI.setPlaceholders(target, title);
+        title = parse(viewer, target, title);
         title = ChatColor.translateAlternateColorCodes('&', title);
 
         int size = menuConfig.getInt("size", 27);
@@ -48,7 +48,7 @@ public class MenuManager {
 
             // Matériau
             String materialString = menuConfig.getString(path + ".material", "STONE");
-            materialString = PlaceholderAPI.setPlaceholders(target, materialString);
+            materialString = parse(viewer, target, materialString);
 
             ItemStack item;
             if (materialString.toLowerCase().startsWith("head-")) {
@@ -70,7 +70,7 @@ public class MenuManager {
             // Nom de l'item
             String displayName = menuConfig.getString(path + ".display_name", "");
             if (!displayName.isEmpty()) {
-                displayName = PlaceholderAPI.setPlaceholders(target, displayName);
+                displayName = parse(viewer, target, displayName);
                 meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', displayName));
             }
 
@@ -78,7 +78,7 @@ public class MenuManager {
             List<String> lore = menuConfig.getStringList(path + ".lore");
             if (!lore.isEmpty()) {
                 List<String> coloredLore = lore.stream()
-                    .map(line -> PlaceholderAPI.setPlaceholders(target, line))
+                    .map(line -> parse(viewer, target, line))
                     .map(line -> ChatColor.translateAlternateColorCodes('&', line))
                     .collect(Collectors.toList());
                 meta.setLore(coloredLore);
@@ -109,6 +109,16 @@ public class MenuManager {
         }
     }
 
+    /**
+     * Placeholders du joueur cible ; %viewer% est d'abord remplacé par le nom de celui qui ouvre le menu, ce qui
+     * permet des placeholders relatifs à lui (ex. %shisvalues_acces_allowed_%viewer%% : permissions de la cible
+     * sur l'île de celui qui regarde).
+     */
+    static String parse(Player viewer, OfflinePlayer target, String text) {
+        if (text == null) return null;
+        return PlaceholderAPI.setPlaceholders(target, viewer == null ? text : text.replace("%viewer%", viewer.getName()));
+    }
+
     /** Son lu en config : ancien nom (ENTITY_PLAYER_LEVELUP) ou clé (minecraft:entity.player.levelup). */
     static Sound sound(String raw) {
         if (raw == null || raw.isBlank()) return null;
@@ -126,7 +136,7 @@ public class MenuManager {
 
     // Méthode pour exécuter les commandes (utilisée aussi par le Listener)
     public void executeCommand(Player viewer, OfflinePlayer target, String command) {
-        command = PlaceholderAPI.setPlaceholders(target, command);
+        command = parse(viewer, target, command);
 
         if (command.startsWith("[player] ")) {
             viewer.performCommand(command.substring(9));

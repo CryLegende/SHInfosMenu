@@ -1,3 +1,6 @@
+# Tous les textes et commandes supportent les placeholders du joueur cible ; %viewer% y est remplacé par le nom
+# de celui qui ouvre le menu (pour des placeholders relatifs à lui, ex. %shisvalues_acces_allowed_%viewer%%).
+
 # Titre du menu. Supporte les placeholders du joueur cible.
 menu_title: '&8&lMenu &8| Infos de %player_name%'
 
@@ -97,3 +100,17 @@ items:
     click_commands:
       - "[player] inv %player_name%"
       # - "[close]"
+  'island_access':
+    material: SHIELD
+    slot: 15
+    display_name: '&eAccès à votre île'
+    lore:
+      - ''
+      - '&7Statut : %shisvalues_acces_status_%viewer%%'
+      - '&7Accordées : %shisvalues_acces_allowed_%viewer%%'
+      - '&7Retirées : %shisvalues_acces_denied_%viewer%%'
+      - ''
+      - "&7&o(( &f&oCliquez pour &e&omodifier ses permissions &7&o))"
+    click_commands:
+      - "[close]"
+      - "[player] is permissions %player_name%"
