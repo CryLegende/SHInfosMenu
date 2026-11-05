@@ -59,7 +59,7 @@ items:
       - '&7Temps de jeu: &5%jetsantiafkpro_timeplayed_hours_unformatted% heures'
       - '&71ère connexion: &d%player_first_join_date%'
       - '&8(ᴀᴠᴇᴄ %statistic_leave_game% ᴄᴏɴɴᴇxɪᴏɴѕ)'
-      - '&7Votes du mois: &b%voteparty_totalvotes_monthly%'
+      - '&7Votes du mois: &b%shvotesreward_votes_monthly%'
       - ''
       - '&7Île: %superior_island_name%&7 (&f%superior_player_role%&7)'
       - '&7Niveau d''île: &e%superior_island_level% &7(&e#%superior_island_top_level_position%&7)'
