@@ -1,0 +1,16 @@
+# Messages de SHInfosMenu. Codes couleur & acceptés.
+# Placeholders : %target% (pseudo tapé dans la commande), %subcommands% (sous-commandes permises),
+# %file% et %error% (fichier illisible au rechargement).
+
+# /infos <joueur>
+no-permission: "&7&l« &f&lSH &8&l» &fCommande inconnue, essayez autre chose."
+usage: "&7&l« &c&lSH &8&l» &7Usage: &c/infos <joueur>"
+player-not-found: "&7&l« &c&lSH &8&l» &7Le joueur '&c%target%&7' n'a jamais été vu sur le serveur."
+player-offline: "&7&l« &c&lSH &8&l» &7Le joueur '&c%target%&7' est actuellement hors ligne."
+player-blacklisted: "&7&l« &c&lSH &8&l» &7Vous ne pouvez pas consulter les informations de ce joueur."
+console-not-allowed: "&7&l« &c&lSH &8&l» &7Cette commande ne peut être exécutée que par un joueur."
+
+# /shinfosmenu
+admin-usage: "&7&l« &e&lSH &8&l» &7Utilisation : &e/shinfosmenu &7<&e%subcommands%&7>"
+reloaded: "&7&l« &a&lSH &8&l» &7Configuration de SHInfosMenu &arechargée &7(config.yml, menu.yml, messages.yml)."
+reload-failed: "&7&l« &c&lSH &8&l» &7Rechargement annulé : &c%file% &7est illisible (&c%error%&7). L'ancienne configuration est gardée."

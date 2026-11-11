@@ -11,3 +11,19 @@ commands:
     description: Ouvre le menu d'informations pour un joueur.
     usage: "/infos <joueur>"
     permission: shinfosmenu.use
+  shinfosmenu:
+    description: Administration de SHInfosMenu
+    usage: /<command> reload
+
+permissions:
+  shinfosmenu.use:
+    description: Ouvrir le menu d'informations d'un joueur avec /infos
+    default: op
+  shinfosmenu.admin:
+    description: Toutes les commandes d'administration de SHInfosMenu
+    default: op
+    children:
+      shinfosmenu.admin.reload: true
+  shinfosmenu.admin.reload:
+    description: Recharger config.yml, menu.yml et messages.yml
+    default: false
