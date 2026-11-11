@@ -2,6 +2,7 @@ package org.Cry_Legende.sHInfosMenu.menu;
 
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.Cry_Legende.sHInfosMenu.SHInfosMenu;
+import org.Cry_Legende.sHInfosMenu.utils.PlayerHeads;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -54,7 +55,7 @@ public class MenuManager {
             if (materialString.toLowerCase().startsWith("head-")) {
                 item = new ItemStack(Material.PLAYER_HEAD);
                 SkullMeta skullMeta = (SkullMeta) item.getItemMeta();
-                skullMeta.setOwningPlayer(target);
+                PlayerHeads.apply(skullMeta, target.getUniqueId(), target.getName());
                 item.setItemMeta(skullMeta);
             } else {
                 try {

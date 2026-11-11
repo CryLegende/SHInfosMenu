@@ -21,6 +21,7 @@ Utilisé sur : **Opale**.
 ## Dépendances
 
 - Obligatoires : `PlaceholderAPI`
+- Optionnelle : `SHSkins` (tête du joueur avec son skin dans le menu, sinon tête sans texture : Steve ou Alex)
 
 ## Commandes
 
@@ -59,6 +60,8 @@ mvn clean package
 ```
 
 Le jar est généré dans `target/`.
+
+SHSkins doit être installé dans le dépôt Maven local (`mvn install` dans `SHSkins-Velocity`).
 
 ---
 
