@@ -21,6 +21,5 @@ check-if-online: true
 # Liste des joueurs pour qui la commande /infos ne fonctionnera pas.
 # Les noms sont sensibles à la casse.
 blacklist:
-  - "Cry_Legende"
-  - "Enzias"
-  - "Topicfly"
+  - "Steve"
+  - "Alex"
