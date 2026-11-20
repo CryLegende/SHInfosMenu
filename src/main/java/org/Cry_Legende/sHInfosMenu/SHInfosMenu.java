@@ -74,12 +74,10 @@ public final class SHInfosMenu extends JavaPlugin {
         }
         getServer().getPluginManager().registerEvents(new MenuListener(this), this);
 
-        getLogger().info("SHInfosMenu a été activé avec succès !");
     }
 
     @Override
     public void onDisable() {
-        getLogger().info("SHInfosMenu a été désactivé.");
     }
 
     public MenuManager getMenuManager() {
